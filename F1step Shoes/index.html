@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>F1rstep Shoes — Every Journey Begins With...</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= LOADER ================= -->
+
+<div class="loader" id="loader">
+    <div class="loader-logo">F1RSTEP</div>
+    <div class="loader-line">
+        <span id="loaderProgress"></span>
+    </div>
+    <div class="loader-text">EVERY JOURNEY BEGINS WITH...</div>
+</div>
+
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="top-bar">
+    <span>PREMIUM COLLECTION 2026</span>
+    <span>DESIGNED FOR YOUR NEXT STEP</span>
+</div>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo-area">
+        <a href="#" class="logo">F1rstep</a>
+
+        <div class="logo-line">
+            every journey begins with...
+        </div>
+    </div>
+
+
+    <nav class="nav-links">
+        <a href="#shoes">Shoes</a>
+        <a href="#jackets">Jackets</a>
+        <a href="#bags">Bags</a>
+        <a href="#sandals">Sandals</a>
+    </nav>
+
+
+    <div class="nav-actions">
+
+        <!-- SEARCH -->
+
+        <div class="search-wrapper">
+
+            <svg
+                class="search-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+            >
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="M20 20l-4-4"></path>
+            </svg>
+
+            <input
+                type="text"
+                id="searchBar"
+                placeholder="Search products..."
+                autocomplete="off"
+            >
+
+            <button
+                id="clearSearch"
+                class="clear-search"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- CART -->
+
+        <button
+            class="cart-button"
+            id="cartButton"
+            type="button"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+            >
+                <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L21 8H6"></path>
+                <circle cx="10" cy="20" r="1"></circle>
+                <circle cx="18" cy="20" r="1"></circle>
+            </svg>
+
+            <span id="cart-count">0</span>
+
+        </button>
+
+
+        <!-- ADMIN MENU -->
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            type="button"
+            aria-label="Host access"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= SEARCH RESULT MESSAGE ================= -->
+
+<div class="search-status" id="searchStatus">
+    <span id="searchStatusText"></span>
+</div>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-label">
+            F1RSTEP / NEW SEASON
+        </span>
+
+        <h1>
+            Start with<br>
+            your <em>F1rstep.</em>
+        </h1>
+
+        <p>
+            Premium fashion made for every destination,
+            every movement and every first step.
+        </p>
+
+        <a href="#shoes" class="hero-button">
+            Explore Collection
+            <span>→</span>
+        </a>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="hero-image">
+            <img
+                src="https://5.imimg.com/data5/SELLER/Default/2024/5/423563632/KO/XB/UC/80311515/dsc01169-3-500x500.jpg"
+                alt="F1rstep footwear"
+            >
+        </div>
+
+        <div class="hero-image-label">
+            <span>01</span>
+            <span>THE FIRST STEP</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INTRO ================= -->
+
+<section class="intro-section">
+
+    <div class="intro-small">
+        F1RSTEP / EST. 2026
+    </div>
+
+    <div class="intro-text">
+        <h2>
+            Made for the moments
+            <span>that move you.</span>
+        </h2>
+
+        <p>
+            Discover footwear and everyday essentials
+            designed to bring confidence to wherever
+            your journey takes you.
+        </p>
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORY NAV ================= -->
+
+<section class="category-nav">
+
+    <div class="section-label">
+        SHOP THE COLLECTION
+    </div>
+
+    <div class="category-links">
+
+        <a href="#shoes">
+            <span>01</span>
+            Shoes
+            <b>→</b>
+        </a>
+
+        <a href="#jackets">
+            <span>02</span>
+            Jackets
+            <b>→</b>
+        </a>
+
+        <a href="#sandals">
+            <span>03</span>
+            Sandals
+            <b>→</b>
+        </a>
+
+        <a href="#bags">
+            <span>04</span>
+            Bags
+            <b>→</b>
+        </a>
+
+        <a href="#belts">
+            <span>05</span>
+            Belts
+            <b>→</b>
+        </a>
+
+        <a href="#wallets">
+            <span>06</span>
+            Wallets
+            <b>→</b>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<main id="productSections">
+
+    <section class="category-section reveal" id="shoes">
+
+        <div class="section-heading">
+            <div>
+                <span>01 / COLLECTION</span>
+                <h2>Shoes</h2>
+            </div>
+
+            <p>
+                Built to take you further.
+            </p>
+        </div>
+
+        <div class="products" id="shoes-products"></div>
+
+    </section>
+
+
+    <section class="category-section reveal" id="jackets">
+
+        <div class="section-heading">
+            <div>
+                <span>02 / COLLECTION</span>
+                <h2>Jackets</h2>
+            </div>
+
+            <p>
+                Layers for every journey.
+            </p>
+        </div>
+
+        <div class="products" id="jackets-products"></div>
+
+    </section>
+
+
+    <section class="category-section reveal" id="sandals">
+
+        <div class="section-heading">
+            <div>
+                <span>03 / COLLECTION</span>
+                <h2>Sandals</h2>
+            </div>
+
+            <p>
+                Easy movement. Everyday comfort.
+            </p>
+        </div>
+
+        <div class="products" id="sandals-products"></div>
+
+    </section>
+
+
+    <section class="category-section reveal" id="bags">
+
+        <div class="section-heading">
+            <div>
+                <span>04 / COLLECTION</span>
+                <h2>Bags</h2>
+            </div>
+
+            <p>
+                Carry what matters.
+            </p>
+        </div>
+
+        <div class="products" id="bags-products"></div>
+
+    </section>
+
+
+    <section class="category-section reveal" id="belts">
+
+        <div class="section-heading">
+            <div>
+                <span>05 / COLLECTION</span>
+                <h2>Belts</h2>
+            </div>
+
+            <p>
+                The finishing detail.
+            </p>
+        </div>
+
+        <div class="products" id="belts-products"></div>
+
+    </section>
+
+
+    <section class="category-section reveal" id="wallets">
+
+        <div class="section-heading">
+            <div>
+                <span>06 / COLLECTION</span>
+                <h2>Wallets</h2>
+            </div>
+
+            <p>
+                Essentials, refined.
+            </p>
+        </div>
+
+        <div class="products" id="wallets-products"></div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= BRAND STRIP ================= -->
+
+<section class="brand-strip">
+    <div>F1RSTEP</div>
+    <div>MOVE WITH PURPOSE</div>
+    <div>F1RSTEP</div>
+    <div>MOVE WITH PURPOSE</div>
+</section>
+
+
+<!-- ================= ADMIN PANEL ================= -->
+
+<div class="admin-overlay" id="adminOverlay">
+
+    <div class="admin-panel">
+
+        <button
+            class="panel-close"
+            id="closeAdmin"
+            type="button"
+        >
+            ×
+        </button>
+
+        <div class="admin-heading">
+            <span>HOST ACCESS</span>
+            <h2>Admin Panel</h2>
+            <p>Manage your F1rstep collection.</p>
+        </div>
+
+
+        <div class="admin-form">
+
+            <label>
+                Product Name
+                <input
+                    type="text"
+                    id="product-name"
+                    placeholder="Example: Classic Runner"
+                >
+            </label>
+
+
+            <label>
+                Price
+                <input
+                    type="text"
+                    id="product-price"
+                    placeholder="Example: 2499"
+                >
+            </label>
+
+
+            <label>
+                Discount %
+                <input
+                    type="number"
+                    id="product-discount"
+                    placeholder="0"
+                    min="0"
+                    max="100"
+                >
+            </label>
+
+
+            <label>
+                Category
+                <select id="product-category">
+
+                    <option value="shoes">Shoes</option>
+                    <option value="jackets">Jackets</option>
+                    <option value="sandals">Sandals</option>
+                    <option value="bags">Bags</option>
+                    <option value="belts">Belts</option>
+                    <option value="wallets">Wallets</option>
+
+                </select>
+            </label>
+
+
+            <label>
+                Product Tag
+                <input
+                    type="text"
+                    id="product-tag"
+                    placeholder="Trending / New / Limited"
+                >
+            </label>
+
+
+            <label>
+                Stock
+                <select id="product-stock">
+
+                    <option value="In Stock">
+                        In Stock
+                    </option>
+
+                    <option value="Low Stock">
+                        Low Stock
+                    </option>
+
+                    <option value="Out Of Stock">
+                        Out Of Stock
+                    </option>
+
+                </select>
+            </label>
+
+
+            <label>
+                Sizes
+                <input
+                    type="text"
+                    id="product-sizes"
+                    placeholder="6, 7, 8, 9, 10"
+                >
+            </label>
+
+
+            <label class="full-width">
+                Product Images
+                <textarea
+                    id="product-images"
+                    placeholder="Paste image links separated by commas"
+                ></textarea>
+            </label>
+
+
+            <button
+                class="admin-submit"
+                id="uploadProduct"
+                type="button"
+            >
+                Upload Product
+            </button>
+
+
+            <div class="delete-area">
+
+                <label>
+                    Select Product To Delete
+
+                    <select id="delete-product-select">
+                        <option value="">
+                            Select product
+                        </option>
+                    </select>
+
+                </label>
+
+                <button
+                    class="delete-button"
+                    id="deleteProduct"
+                    type="button"
+                >
+                    Delete Selected Product
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= IMAGE MODAL ================= -->
+
+<div class="image-overlay" id="imageModal">
+
+    <div class="image-viewer">
+
+        <button
+            class="image-close"
+            id="closeImage"
+            type="button"
+        >
+            ×
+        </button>
+
+        <img
+            id="mainImage"
+            src=""
+            alt="Product image"
+        >
+
+        <div
+            class="thumbnail-container"
+            id="thumbnailContainer"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= CART ================= -->
+
+<div class="cart-overlay" id="cartPopup">
+
+    <div class="cart-box">
+
+        <div class="cart-header">
+
+            <div>
+                <span>F1RSTEP</span>
+                <h2>Your Bag</h2>
+            </div>
+
+            <button
+                class="cart-close"
+                id="closeCart"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="cartItems"></div>
+
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+                <span>Total</span>
+                <strong id="cartTotal">₹0</strong>
+            </div>
+
+            <button
+                class="buy-button"
+                id="buyNow"
+                type="button"
+            >
+                Checkout on WhatsApp
+                <span>→</span>
+            </button>
+
+            <button
+                class="empty-button"
+                id="emptyCart"
+                type="button"
+            >
+                Empty Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast">
+    <span class="toast-check">✓</span>
+    <span id="toastText">Added to cart</span>
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <h2>F1rstep</h2>
+
+            <p>
+                Every journey begins with a first step.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <div>
+                <span>SHOP</span>
+                <a href="#shoes">Shoes</a>
+                <a href="#jackets">Jackets</a>
+                <a href="#bags">Bags</a>
+            </div>
+
+            <div>
+                <span>EXPLORE</span>
+                <a href="#sandals">Sandals</a>
+                <a href="#belts">Belts</a>
+                <a href="#wallets">Wallets</a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 F1rstep Shoes
+        </span>
+
+        <span>
+            EVERY JOURNEY BEGINS WITH...
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
